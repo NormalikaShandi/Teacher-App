@@ -36,6 +36,7 @@ export default function data() {
   return {
     columns: [
       { Header: "nama siswa", accessor: "nama", align: "left" },
+      { Header: "no telpon", accessor: "telpon", width: "20%", align: "left" },
       { Header: "absen", accessor: "absen", width: "20%", align: "left" },
       { Header: "nilai", accessor: "nilai", width: "20%", align: "left" },
     ],
@@ -43,6 +44,11 @@ export default function data() {
     rows: [
       {
         nama: <Project name="Asana" />,
+        telpon: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            089578
+          </MDTypography>
+        ),
         absen: (
           <MDTypography
             component={Link}

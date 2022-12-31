@@ -13,9 +13,17 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+import * as React from "react";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -30,10 +38,20 @@ import DataTable from "examples/Tables/DataTable";
 // Data
 import nilaiTableData from "layouts/nilai/data/nilaiTableData";
 import MDButton from "components/MDButton";
-import { Icon } from "@mui/material";
+import { Box, FormControl, Icon, InputLabel, NativeSelect } from "@mui/material";
 
 function Tables() {
   const { columns: pColumns, rows: pRows } = nilaiTableData();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <DashboardLayout>
       <DashboardNavbar />
@@ -55,10 +73,49 @@ function Tables() {
                 <MDTypography variant="h6" color="white">
                   Nilai
                 </MDTypography>
-                <MDButton variant="gradient" color="dark">
+                <MDButton variant="gradient" color="dark" onClick={handleClickOpen}>
                   <Icon sx={{ fontWeight: "bold" }}>add</Icon>
                   &nbsp;tambah
                 </MDButton>
+                <Dialog open={open} onClose={handleClose}>
+                  <DialogTitle>Tambah Nilai</DialogTitle>
+                  <DialogContent>
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="name"
+                      label="Masukian Nilai"
+                      type="text"
+                      fullWidth
+                      variant="standard"
+                    />
+                    <Box sx={{ minWidth: 120 }}>
+                      <FormControl fullWidth>
+                        <InputLabel variant="standard" htmlFor="uncontrolled-native">
+                          Keterangan
+                        </InputLabel>
+                        <NativeSelect
+                          defaultValue={30}
+                          inputProps={{
+                            name: "ket",
+                            id: "uncontrolled-native",
+                          }}
+                        >
+                          <option value={10}>H1</option>
+                          <option value={20}>H2</option>
+                          <option value={30}>H3</option>
+                          <option value={40}>H4</option>
+                          <option value={50}>UTS</option>
+                          <option value={60}>UAS</option>
+                        </NativeSelect>
+                      </FormControl>
+                    </Box>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleClose}>Tambah</Button>
+                  </DialogActions>
+                </Dialog>
               </MDBox>
               <MDBox pt={3}>
                 <DataTable

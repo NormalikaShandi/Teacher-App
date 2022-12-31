@@ -13,9 +13,17 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
+import * as React from "react";
+
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import Button from "@mui/material/Button";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
@@ -34,6 +42,15 @@ import { Icon } from "@mui/material";
 
 function Tables() {
   const { columns: pColumns, rows: pRows } = mapelTableData();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <DashboardLayout>
@@ -56,10 +73,28 @@ function Tables() {
                 <MDTypography variant="h6" color="white">
                   Mata Pelajaran
                 </MDTypography>
-                <MDButton variant="gradient" color="dark">
+                <MDButton variant="gradient" color="dark" onClick={handleClickOpen}>
                   <Icon sx={{ fontWeight: "bold" }}>add</Icon>
                   &nbsp;tambah
                 </MDButton>
+                <Dialog open={open} onClose={handleClose}>
+                  <DialogTitle>Tambah data Mapel</DialogTitle>
+                  <DialogContent>
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="name"
+                      label="Nama Mapel"
+                      type="text"
+                      fullWidth
+                      variant="standard"
+                    />
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={handleClose}>Tambah</Button>
+                  </DialogActions>
+                </Dialog>
               </MDBox>
               <MDBox pt={3}>
                 <DataTable

@@ -35,21 +35,45 @@ export default function data() {
   return {
     columns: [
       { Header: "nama siswa", accessor: "nama", align: "left" },
-      { Header: "H1", accessor: "absen", width: "20%", align: "left" },
-      { Header: "UAS", accessor: "nilai", width: "20%", align: "left" },
+      { Header: "H1", accessor: "h1", width: "20%", align: "left" },
+      { Header: "H2", accessor: "h2", width: "20%", align: "left" },
+      { Header: "H3", accessor: "h3", width: "20%", align: "left" },
+      { Header: "H4", accessor: "h4", width: "20%", align: "left" },
+      { Header: "UTS", accessor: "uts", width: "20%", align: "left" },
+      { Header: "UAS", accessor: "uas", width: "20%", align: "left" },
     ],
 
     rows: [
       {
         nama: <Project name="Asana" />,
-        absen: (
+        h1: (
           <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
-            Lihat
+            90
           </MDTypography>
         ),
-        nilai: (
+        h2: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            Lihat
+            78
+          </MDTypography>
+        ),
+        h3: (
+          <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
+            90
+          </MDTypography>
+        ),
+        h4: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            78
+          </MDTypography>
+        ),
+        uts: (
+          <MDTypography component="a" href="#" variant="button" color="text" fontWeight="medium">
+            90
+          </MDTypography>
+        ),
+        uas: (
+          <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
+            78
           </MDTypography>
         ),
       },
